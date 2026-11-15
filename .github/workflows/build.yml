@@ -1,0 +1,13 @@
+name: build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mymindstorm/setup-emsdk@v14
+      - run: chmod +x build_wasm.sh && ./build_wasm.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chesspx43_final
+          path: chesspx43_final.html
